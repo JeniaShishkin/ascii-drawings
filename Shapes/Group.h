@@ -1,21 +1,62 @@
 #ifndef __GROUP_H__
 #define __GROUP_H__
 
-#include <memory>
-#include <vector>
 #include "ObjectBase.h"
+#include <vector>
+#include <memory>
+#include <algorithm>
 
-
-class Group
+class Group : public ObjectBase
 {
-private:
-    Group(std::vector<std::shared_ptr<ObjectBase>> collection) : m_collection(collection) { }
-
 public:
+    // Construct a group from a vector of shared pointers
+    explicit Group(const std::vector<std::shared_ptr<ObjectBase>>& collection)
+        : ObjectBase(' ', ascii::ColoredCanvas::WHITE, ascii::ColoredCanvas::BLACK),
+          m_collection(collection) {}
 
-std::vector<std::shared_ptr<ObjectBase>> m_collection;
+    // Move all objects in the group
+    virtual void move(int dx, int dy) override {
+        for (auto& obj : m_collection) {
+            obj->move(dx, dy);
+        }
+    }
 
+    // Resize all objects in the group
+    virtual void resize(double percentage) override {
+        for (auto& obj : m_collection) {
+            obj->resize(percentage);
+        }
+    }
+
+    // Rotate all objects in the group around a given point
+    virtual void rotate(Point rotationCenter, double degrees) override {
+        for (auto& obj : m_collection) {
+            obj->rotate(rotationCenter, degrees);
+        }
+    }
+
+    // Draw all objects in the group
+    virtual void draw(ascii::ColoredCanvas& canvas) override {
+        for (auto& obj : m_collection) {
+            obj->draw(canvas);
+        }
+    }
+
+    // Combine two groups into a new group
+    Group operator+(const Group& other) const {
+        std::vector<std::shared_ptr<ObjectBase>> combined = m_collection;
+        combined.insert(combined.end(), other.m_collection.begin(), other.m_collection.end());
+        return Group{combined};
+    }
+
+    // Add a single object to the group
+    void add(std::shared_ptr<ObjectBase> obj) {
+        m_collection.push_back(obj);
+    }
+
+private:
+    bool newBackground = false;
+    std::vector<std::shared_ptr<ObjectBase>> m_collection;
 };
-
 
 #endif

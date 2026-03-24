@@ -42,8 +42,9 @@ public:
             c = Point(newX, newY);
         }
     }
-    virtual void rotate(Point rotationCenter, double degrees) { // RotationCenter point isn's used in this case, as we rotate along 
-                        for (auto& corner : corners) { corner.RotateAround(m_center.GetX(), m_center.GetY(), degrees); } }
+    virtual void rotate(Point rotationCenter, double degrees) { // RotationCenter point isn's used in this case, as we rotate 
+                        for (auto& corner : corners)            // along the center of the rectangle.
+                        { corner.RotateAround(m_center.GetX(), m_center.GetY(), degrees); } }
 
     ~Square() = default;
     void recalculateCenter() 
