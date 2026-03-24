@@ -1,0 +1,30 @@
+Write a c++ library that allows me to define and draw objects.
+ 
+Basic objects:
+Point
+Line
+Circle
+Rectangle
+Square
+ 
+Group
+a group is a collection of objects.
+Groups CAN contain other groups.
+ 
+For example:
+A rectangle + two lines are put into a group called Window.
+A rectangle + 2 windows within that rectangle are put into a group called House.
+3 Houses are drawn one next to the other and are put into a group called Street.
+ 
+ 
+For each object (including groups) I will have the following function ability:
+# - Control Foreground color (for groups - use the original color of each object unless a new color is assigned)
+# - Control Background color
+# - Set location on the canvas
+# - Move to a new location on the canvas
+- Rotate by 0, 90, 180, 270 degrees (hint: use rotation functionality of point)
+   - advanced: support 45, 135, etc...
+# - Select drawing brush
+- Resize the shape by a percentage, i.e. 50%, 200%
+
+DRAW THE CLASS DIAGRAM!
