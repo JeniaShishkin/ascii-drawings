@@ -18,7 +18,7 @@ public:
     ObjectBase& operator=(const ObjectBase&) = delete;
     void setDrawingBrush(const char &newBrush) { m_brush = newBrush; }
     void changeFgColor(color newFgColor) { m_fgColor = newFgColor; }
-    void changeBgColor(color newBgColor) { m_bgColor = newBgColor; }
+    virtual void changeBgColor(color newBgColor) { m_bgColor = newBgColor; }
     void selectBrush(char newBrush) { m_brush = newBrush; }
     virtual void draw(canvas& canvas) = 0;
     virtual void move(int dx, int dy) = 0;

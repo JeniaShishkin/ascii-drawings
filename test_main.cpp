@@ -5,6 +5,9 @@
 #include <thread>
 #include <chrono>
 #include "Shapes/Circle.h"
+#include "Shapes/Square.h"
+#include "Shapes/Rectangle.h"
+#include "Shapes/Line.h"
 #include "Shapes/Point.h"
 
 int main()
@@ -31,9 +34,14 @@ int main()
     ascii::ColoredCanvas test_canvas{gridNumbers};
     
     Circle test_circle{'*', ascii::ColoredCanvas::MAGENTA, ascii::ColoredCanvas::YELLOW, Point{5, 7}, 5};
-//    test_circle.move(0,3);
-    test_circle.changeBgColor(ascii::ColoredCanvas::GREEN);
-    test_circle.draw(test_canvas);
+    Line line{'#', ascii::ColoredCanvas::TERMINAL_COLOR, ascii::ColoredCanvas::WHITE, Point{15, 7}, Point{40, 7}};
+    Rectangle rec{'#', ascii::ColoredCanvas::TERMINAL_COLOR, ascii::ColoredCanvas::WHITE, Point{15, 7}, 2, 5};
+    Square sqr{'#', ascii::ColoredCanvas::MAGENTA, ascii::ColoredCanvas::WHITE, Point{30, 7}, 5};
+    //    test_circle.move(0,3);
+//    test_circle.changeBgColor(ascii::ColoredCanvas::GREEN);
+    rec.draw(test_canvas);
+    sqr.draw(test_canvas);
+//    line.resize(50);
     test_canvas.Print(std::cout);
 
 

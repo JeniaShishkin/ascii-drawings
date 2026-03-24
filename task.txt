@@ -22,9 +22,9 @@ For each object (including groups) I will have the following function ability:
 # - Control Background color
 # - Set location on the canvas
 # - Move to a new location on the canvas
-- Rotate by 0, 90, 180, 270 degrees (hint: use rotation functionality of point)
+#- Rotate by 0, 90, 180, 270 degrees (hint: use rotation functionality of point)
    - advanced: support 45, 135, etc...
 # - Select drawing brush
-- Resize the shape by a percentage, i.e. 50%, 200%
+# - Resize the shape by a percentage, i.e. 50%, 200%
 
 DRAW THE CLASS DIAGRAM!

@@ -15,35 +15,53 @@ public:
           m_collection(collection) {}
 
     // Move all objects in the group
-    virtual void move(int dx, int dy) override {
-        for (auto& obj : m_collection) {
+    virtual void move(int dx, int dy) override 
+    {
+        for (auto& obj : m_collection) 
+        {
             obj->move(dx, dy);
         }
     }
 
     // Resize all objects in the group
-    virtual void resize(double percentage) override {
-        for (auto& obj : m_collection) {
+    virtual void resize(double percentage) override 
+    {
+        for (auto& obj : m_collection) 
+        {
             obj->resize(percentage);
         }
     }
 
     // Rotate all objects in the group around a given point
-    virtual void rotate(Point rotationCenter, double degrees) override {
-        for (auto& obj : m_collection) {
+    virtual void rotate(Point rotationCenter, double degrees) override 
+    {
+        for (auto& obj : m_collection) 
+        {
             obj->rotate(rotationCenter, degrees);
         }
     }
 
     // Draw all objects in the group
-    virtual void draw(ascii::ColoredCanvas& canvas) override {
-        for (auto& obj : m_collection) {
+    virtual void draw(ascii::ColoredCanvas& canvas) override
+    {
+        for (auto& obj : m_collection) 
+        {
             obj->draw(canvas);
         }
     }
-
+    virtual void changeBgColor(color newBgColor) override 
+    {
+        if (newBackground) // Background was changed at least once.
+        {
+            for(auto& obj : m_collection)
+            {
+                obj->changeBgColor(newBgColor);
+            }
+        }
+    }
     // Combine two groups into a new group
-    Group operator+(const Group& other) const {
+    Group operator+(const Group& other) const 
+    {
         std::vector<std::shared_ptr<ObjectBase>> combined = m_collection;
         combined.insert(combined.end(), other.m_collection.begin(), other.m_collection.end());
         return Group{combined};
