@@ -7,8 +7,8 @@
 class Point {
 public:
 	//using CoordType = short;
-
 	using CoordType = int;
+	Point() : m_x(0), m_y(0) {}
 	Point(CoordType a_x, CoordType a_y) : m_x(a_x), m_y(a_y) { }
 	Point(const Point& a_other) = default;
 	Point(const Point& a_other, CoordType a_xOffset, CoordType a_yOffset) : m_x(a_other.m_x + a_xOffset), m_y(a_other.m_y + a_yOffset) { }

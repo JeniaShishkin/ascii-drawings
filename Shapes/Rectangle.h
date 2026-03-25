@@ -7,6 +7,7 @@
 class Rectangle : public ObjectBase
 {
 public:
+    Rectangle() = delete;
     explicit Rectangle(char brush, color fgColor, color bgColor, Point topLeftCorner, int width, int height)
         : ObjectBase(brush, fgColor, bgColor),
           m_center(topLeftCorner.GetX() + width / 2,topLeftCorner.GetY() + height / 2),
@@ -27,7 +28,7 @@ public:
     void recalculateCenter();
     ~Rectangle() = default;
 
-private:
+protected:
     Point m_center;
     std::array<Point, 4> corners;
 };

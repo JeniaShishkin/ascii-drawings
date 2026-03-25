@@ -15,50 +15,17 @@ public:
           m_collection(collection) {}
 
     // Move all objects in the group
-    virtual void move(int dx, int dy) override 
-    {
-        for (auto& obj : m_collection) 
-        {
-            obj->move(dx, dy);
-        }
-    }
+    virtual void move(int dx, int dy) override { for (auto& obj : m_collection) {obj->move(dx, dy); } }
 
     // Resize all objects in the group
-    virtual void resize(double percentage) override 
-    {
-        for (auto& obj : m_collection) 
-        {
-            obj->resize(percentage);
-        }
-    }
+    virtual void resize(double percentage) override { for (auto& obj : m_collection) { obj->resize(percentage); } }
 
     // Rotate all objects in the group around a given point
-    virtual void rotate(Point rotationCenter, double degrees) override 
-    {
-        for (auto& obj : m_collection) 
-        {
-            obj->rotate(rotationCenter, degrees);
-        }
-    }
+    virtual void rotate(Point rotationCenter, double degrees) override { for (auto& obj : m_collection) { obj->rotate(rotationCenter, degrees); } }
 
     // Draw all objects in the group
-    virtual void draw(ascii::ColoredCanvas& canvas) override
-    {
-        for (auto& obj : m_collection) 
-        {
-            obj->draw(canvas);
-        }
-    }
-    virtual void changeBgColor(color newBgColor) override 
-    {
-        if (newBackground) // Background was changed at least once.
-        {
-            for(auto& obj : m_collection)
-            {
-                obj->changeBgColor(newBgColor);
-            }
-        }
-    }
+    virtual void draw(ascii::ColoredCanvas& canvas) override { for (auto& obj : m_collection) { obj->draw(canvas); } }
+    virtual void changeBgColor(color newBgColor) override { for(auto& obj : m_collection) { obj->changeBgColor(newBgColor); } }
     // Combine two groups into a new group
     Group operator+(const Group& other) const 
     {
@@ -68,9 +35,7 @@ public:
     }
 
     // Add a single object to the group
-    void add(std::shared_ptr<ObjectBase> obj) {
-        m_collection.push_back(obj);
-    }
+    void add(std::shared_ptr<ObjectBase> obj) { m_collection.push_back(obj); }
 
 private:
     bool newBackground = false;
